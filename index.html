@@ -31,7 +31,10 @@
                     <h1 class="bounce animated mb-5">Feedy, le panier anti-gaspi à petit prix pour les locavores !</h1>
                 </div>
                 <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                    <form><input class="form-control form-control-lg" type="email" placeholder="Entrez votre e-mail..."><button class="btn btn-primary btn-block btn-lg" data-bss-hover-animate="pulse" type="submit" style="background-color: #E9A34D;">Recevoir nos offres</button></form>
+                    <form method="POST" name="sendmail" action="" id="form">
+                        <input id="mail" name="mail" class="form-control form-control-lg" type="email" placeholder="Entrez votre e-mail...">
+                        <button class="btn btn-primary btn-block btn-lg" data-bss-hover-animate="pulse" type="submit" style="background-color: #E9A34D;">Recevoir nos offres</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -125,9 +128,9 @@
                         <h2 class="mb-4">Intéressé? Recevez nos offres !</h2>
                     </div>
                     <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                        <form>
+                        <form method="POST" name="sendmail" action="" id="form">
                             <div class="form-row">
-                                <div class="col-12 col-md-9 mb-2 mb-md-0"><input class="form-control form-control-lg" type="email" placeholder="Entrez votre e-mail..."></div>
+                                <div id="mail" name="mail" class="col-12 col-md-9 mb-2 mb-md-0"><input class="form-control form-control-lg" type="email" placeholder="Entrez votre e-mail..."></div>
                                 <div class="col-12 col-md-3"><button class="btn btn-primary btn-block btn-lg" data-bss-hover-animate="pulse" type="submit" style="background-color: #E9A34D;">GO !</button></div>
                             </div>
                         </form>

@@ -1,13 +1,14 @@
 package main
 
 import (
+	_ "fmt"
+	_ "io"
 	"net/http"
+	_ "os"
 	"strings"
-	_"os"
-	_"io"
+
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
-	"fmt"
 )
 
 //define variables
@@ -15,12 +16,10 @@ var (
 	log *zap.Logger
 )
 
-
 //handle index page
 func index(c *gin.Context) {
 	c.HTML(200, "index.html", nil)
 }
-
 
 //handle form pro
 func contact(c *gin.Context) {
@@ -31,30 +30,47 @@ func legal(c *gin.Context) {
 	c.HTML(200, "legal.html", nil)
 }
 
-
-
 func receptForm(c *gin.Context) {
+	direction := "IN"
 	c.Request.ParseForm()
 	mail := strings.Join(c.Request.PostForm["mail"], " ")
 	name := strings.Join(c.Request.PostForm["name"], " ")
 	message := strings.Join(c.Request.PostForm["message"], " ")
 
-
 	// choose subject and send mail
-	// successReq := insertDb(mail, name, message)
-	successMail := SendMail(mail, name, message)
-	fmt.Println(successMail)
-	// if successMail == nil && successReq == nil {
-	// 	c.Redirect(http.StatusMovedPermanently, "/index")
-	// } else {
-	// 	c.Redirect(http.StatusMovedPermanently, "/error")
-	// }
-	c.Redirect(http.StatusMovedPermanently, "/index")
+	successReq := insertDb(mail, name, message, direction)
+	successMail := recvMail(mail, name, message)
+
+	if successMail == nil && successReq == nil {
+		c.Redirect(http.StatusMovedPermanently, "/index")
+	} else {
+		c.Redirect(http.StatusMovedPermanently, "/legal")
+	}
 }
 
+func subscription(c *gin.Context) {
+	direction := "OUT"
+	c.Request.ParseForm()
+	mail := strings.Join(c.Request.PostForm["mail"], " ")
+	name := ""
+	message := ""
+
+	// choose subject and send mail
+	if mail == "" {
+		c.Redirect(http.StatusMovedPermanently, "/legal")
+	}
+
+	successReq := insertDb(mail, name, message, direction)
+	successMail := sendMail(mail, name, message)
+
+	if successMail == nil && successReq == nil {
+		c.Redirect(http.StatusMovedPermanently, "/index")
+	} else {
+		c.Redirect(http.StatusMovedPermanently, "/legal")
+	}
+}
 
 func main() {
-
 
 	//zap stuff
 	log, _ = zap.NewProduction()
@@ -80,6 +96,8 @@ func main() {
 
 	//POST requests
 	router.POST("/contact", receptForm)
+	router.POST("/index", subscription)
+	router.POST("/", subscription)
 
 	//launch
 	//router.Run(":3000")
