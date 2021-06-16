@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>FEEDY - Acceuil</title>
+    <title>FEEDY - Accueil</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
@@ -16,6 +16,17 @@
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z482V6M4ZK%22%3E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-Z482V6M4ZK');
+    </script>
+
+
 </head>
 
 <body>
@@ -38,6 +49,29 @@
                     </form>
                 </div>
             </div>
+
+            <!-- Alert -->
+            <!-- {{ if .ok eq 1 }}
+                {{ if .send eq 1 }} -->
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        Votre email a bien été envoyé ! Feedy vous remercie.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <!-- {{ else }}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Une erreur s'est produite, veuillez réessayer.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {{ end }}
+            {{ end }} -->
+
+
+
+
         </div>
     </header>
     <section class="text-center bg-light features-icons">
@@ -45,7 +79,7 @@
         <p></p>
         <div class="container">
             <div class="row">
-                <div class="col" style="height: 794px;width: 1283px;">
+                <div class="col" style="width: 1283px;">
                     <p data-bss-hover-animate="pulse" style="font-size: 34px;text-align: left;font-family: 'Amatic SC', serif;opacity: 0.64;font-weight: bold;padding: 45px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style="width: 4%;height: 4%;">
                             <path d="M10.2426 16.3137L6 12.071L7.41421 10.6568L10.2426 13.4853L15.8995 7.8284L17.3137 9.24262L10.2426 16.3137Z" fill="currentColor"></path>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M1 5C1 2.79086 2.79086 1 5 1H19C21.2091 1 23 2.79086 23 5V19C23 21.2091 21.2091 23 19 23H5C2.79086 23 1 21.2091 1 19V5ZM5 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3Z" fill="currentColor"></path>
@@ -139,7 +173,7 @@
                 </div>
             </div>
         </section>
-        <footer class="bg-light footer" style="background-color: #55692D!important;color: var(--light);filter: saturate(75%);height: 130px;">
+        <footer class="bg-light footer" style="background-color: #55692D!important;color: var(--light);filter: saturate(75%);">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 text-center text-lg-left my-auto h-100" style="transform: scale(1.09);">
