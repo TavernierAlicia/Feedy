@@ -3,7 +3,6 @@ package main
 import (
 	_ "fmt"
 	_ "io"
-	"net/http"
 	_ "os"
 	"strings"
 
@@ -18,12 +17,12 @@ var (
 
 //handle index page
 func index(c *gin.Context) {
-	c.HTML(200, "index.html", nil)
+	c.HTML(200, "index.html", map[string]interface{}{"send": 0, "ok": 0})
 }
 
 //handle form pro
 func contact(c *gin.Context) {
-	c.HTML(200, "contact.html", nil)
+	c.HTML(200, "contact.html", map[string]interface{}{"send": 0, "ok": 0})
 }
 
 func legal(c *gin.Context) {
@@ -42,9 +41,9 @@ func receptForm(c *gin.Context) {
 	successMail := recvMail(mail, name, message)
 
 	if successMail == nil && successReq == nil {
-		c.Redirect(http.StatusMovedPermanently, "/index")
+		c.HTML(200, "contact.html", map[string]interface{}{"send": 1, "ok": 1})
 	} else {
-		c.Redirect(http.StatusMovedPermanently, "/legal")
+		c.HTML(200, "contact.html", map[string]interface{}{"send": 0, "ok": 1})
 	}
 }
 
@@ -57,16 +56,16 @@ func subscription(c *gin.Context) {
 
 	// choose subject and send mail
 	if mail == "" {
-		c.Redirect(http.StatusMovedPermanently, "/legal")
+		c.HTML(200, "index.html", map[string]interface{}{"send": 0, "ok": 1})
 	}
 
 	successReq := insertDb(mail, name, message, direction)
 	successMail := sendMail(mail, name, message)
 
 	if successMail == nil && successReq == nil {
-		c.Redirect(http.StatusMovedPermanently, "/index")
+		c.HTML(200, "index.html", map[string]interface{}{"send": 1, "ok": 1})
 	} else {
-		c.Redirect(http.StatusMovedPermanently, "/legal")
+		c.HTML(200, "index.html", map[string]interface{}{"send": 0, "ok": 1})
 	}
 }
 

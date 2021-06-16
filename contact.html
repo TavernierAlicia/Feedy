@@ -32,7 +32,26 @@
                 <div class="form-group"><input id="mail" class="form-control" type="email" name="mail" required="" placeholder="Email" style="margin-bottom: 18px;"></div>
                 <div class="form-group"><textarea id="message" class="form-control" name="message" placeholder="Message" rows="14" required="" minlength="50" maxlength="2000"></textarea></div>
                 <div class="form-group"><button class="btn btn-primary" type="submit" style="background-color: #E9A34D!important;">Envoyer</button></div>
-            </form>
+            
+                        <!-- Alert -->
+                        {{ if  eq .ok 1 }}
+                        {{ if eq .send 1 }}
+                        <div class="alert alert-success" role="alert">
+                            <h4 class="alert-heading">Votre email a bien été envoyé !</h4>
+                            <p>Nous vous répondrons au plus vite !</p>
+                            <hr>
+                            <a class="btn btn-primary" href="/index" style="background-color: #E9A34D!important;">Retourner à l'accueil</a>
+                        </div>
+                        {{ else }}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                Une erreur s'est produite, veuillez réessayer.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {{ end }}
+                    {{ end }}
+                </form>
         </section>
     </section>
     <section class="text-center bg-light testimonials" style="height: 189px;padding: 41px 0px;padding-bottom: 40px;">

@@ -51,15 +51,15 @@
             </div>
 
             <!-- Alert -->
-            <!-- {{ if .ok eq 1 }}
-                {{ if .send eq 1 }} -->
+            {{ if  eq .ok 1 }}
+                {{ if eq .send 1 }}
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        Votre email a bien été envoyé ! Feedy vous remercie.
+                        Nous avons bien reçu votre mail ! Feedy vous remercie.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                <!-- {{ else }}
+                {{ else }}
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         Une erreur s'est produite, veuillez réessayer.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -67,10 +67,7 @@
                         </button>
                     </div>
                 {{ end }}
-            {{ end }} -->
-
-
-
+            {{ end }}
 
         </div>
     </header>
