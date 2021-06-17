@@ -57,6 +57,7 @@ func subscription(c *gin.Context) {
 	// choose subject and send mail
 	if mail == "" {
 		c.HTML(200, "index.html", map[string]interface{}{"send": 0, "ok": 1})
+		return
 	}
 
 	successReq := insertDb(mail, name, message, direction)
